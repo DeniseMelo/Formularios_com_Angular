@@ -1,0 +1,126 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title id="título">Formulário do tipo reactve form</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form action="#" 
+      [formGroup]="personalForm" 
+      (ngSubmit)="submit()"
+      >
+
+        <div class="grow">
+          <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input type="text"
+             matInput 
+             placeholder="Digite seu nome..." 
+             formControlName="name"
+             >
+            <mat-error>Campo obrigatório
+              <span 
+              *ngIf="personalForm.controls['name'].getError('minlength')">Mínimo de 3 caracteres
+            </span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Sobrenome</mat-label>
+            <input 
+            type="text" 
+            matInput 
+            placeholder="Digite seu sobrenome..." 
+            formControlName="lastname"
+            >
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input 
+            type="text" 
+            matInput 
+            placeholder="Digite seu Username..." 
+            formControlName="username">
+            <mat-error>
+              Campo obrigatório
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="grow">
+          <mat-form-field  appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input 
+            type="tel" 
+            class="input" 
+            matInput 
+            placeholder="Digite seu CPF..." 
+            formControlName="cpf">
+            <mat-error>Campo obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="input" appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input 
+            type="tel"
+             matInput
+             placeholder="Digite seu telefone..." 
+             formControlName="phone">
+            <mat-error>Campo obrigatório</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="grow">
+          <mat-form-field class="input" appearance="outline">
+            <mat-label>Endereço</mat-label>
+            <input 
+            type="text" 
+            matInput 
+            placeholder="Digite seu Endereço..." 
+            formControlName="adress">
+            <mat-error>Campo obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="input" appearance="outline">
+            <mat-label>Complemento</mat-label>
+            <input 
+            type="text" 
+            matInput
+             placeholder="casa, apartamento, bloco ..." formControlName="complement">
+          </mat-form-field>
+        </div>
+
+        <div class="grow">
+          <mat-form-field class="input" appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input 
+            type="password" 
+            matInput 
+            placeholder="Digite sua senha..." 
+            formControlName="password">
+            <mat-error>Campo obrigatório</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class ="input" appearance="outline">
+            <mat-label>Confirme sua senha</mat-label>
+            <input
+             type="password" 
+             matInput 
+             placeholder="Digite sua senha..." formControlName="password2">
+            <mat-error>Campo obrigatório</mat-error>
+          </mat-form-field>
+        </div>
+
+        <button 
+        type="submit" 
+        id="btn" 
+        mat-raised-button 
+        color="accent"
+        [disabled]="personalForm.invalid || validarSenha(personalForm.controls['password'].value, 
+         personalForm.controls['password2'].value)">Enviar</button> <!-- Atenção!!!!! campo é validado ou é validado com o dialog, 
+          após o usuário preencher todos os campos e não um dialog para cada campo-->
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
